@@ -157,7 +157,7 @@ for filename in os.listdir(directory):
             time.sleep(1)  # Respect Tumblr API rate limits
 
         df.to_csv(output_csv, index=False)
-        print(f"\n✅ Updated CSV saved to: {output_csv}")
+        print(f"Updated CSV saved to: {output_csv}")
 
     # Usage
     API_KEY = settings['api key']
@@ -205,6 +205,6 @@ for filename in os.listdir(directory):
     rp_threads['archive'] = rp_threads.apply(apply_archive, axis=1)
 
     rp_threads.to_csv(f"{blog}_rp_threads.csv", index=False)
-    print(f"\n✅ Archive flags updated in: {blog}_rp_threads.csv")
+    print(f"Archive flags updated in: {blog}_rp_threads.csv")
 
 
