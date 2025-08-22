@@ -1,15 +1,19 @@
 # pythonrpthreadtracker
- Get list of all threads, choose which are rp threads, and track locally.
+ Generate a list of all threads, choose which are rp threads, and track locally.
+ 
  ## Getting Started:
- 
- ### Settings:
-  1. you will need to get a Tumblr API key. The easiest way to do  this is with a git page, though you can use any website you like.
-  2. Once you have your API key, open the settings script and paste the API key where it says API KEY HERE, keeping the single quotes. 
-  3. In the 'blog name' field, type in the name of the blog you want to track. If it is under the Tumblr domain, you can omit '.tumblr.com'.
-  3. Leave the previous total as zero, This is the total number of posts for the blog the last time the trakcer script was run.
-  4. If you have a tag you use for RP threads, you can add it here and it will automatically add those threads to the RP threads CSV. Else, leave the field blank.
-  5. Run the settings script. If there is not a settings folder, it will be created, with a settings file for your blog. Run for each additional blog you wish to track. The only field that you need to change for each additional blog settings file generated is the blog name, and the optional tracked thread. If wish to completely rewrite the tracked threads csv, either this script for the blog to reset previous total to zero, or open the .json in a text editor and reset to zero manually. 
- 
- ### running the script:
- 
-  There are two ways to select which threads are rp threads (and more importantly, ones you wish to track. The first is to manually go through the list of threads, and change the value of rp thread to 'True'. The second method is to choose a tag that you add to your rp posts for the script to track. You can set this in the settings file under the 'rp tracked thread' entry.
+ This script is meant to be run through command line terminal, though in theory you could also run it through Jupyter Notebook or another 
+ Pythone environment.
+ 1. If you don't have it already, you will need python3. 
+ 2. Generate your API key. Go to https://www.tumblr.com/oauth/apps and register a new application.
+ 3. Open 'settings.py', and paste your API key (consumer key from the application you just registered) on line 15 where it says {XXXXXX_API_KEY_HERE_XXXXXX, between the single quotation marks. Make sure to keep the single quotations, as they denote that the variable api_key is of type string.
+ 4. Run 'settings.py'. Open teminal (for mac or linux) or powershell (for windows), and navigate to the folder pythonrpthreadtracker is in. Type in 'python3 settings.py', and hit ENTER. If this is the first time you are running the script, it will generate a folder named 'settings'. It will generate a .json file with settings and metadata for each blog you are tracking.The script will ask you to enter five values:
+    a. the blog name: if the blog is under the Tumblr domain, omit .tumblr.com. For example, if your blog is the9muses.tumblr.com, then you would enter 'the9muses'.
+    b. tracked tag: if you use a tag to denote in character threads, add it here. If not, press enter to skip.
+    c. auto-archive: this is mostly to make the initial run go a little smoother and filter out threads you don't want to track. This value should be an integer representing the number of days of inactivity you want to allow before automatically archiving a thread. Press ENTER without entering a value if you do not wish to use this functionality.
+    d. ask-archive: this is meant mostly for general maintenance after the initial run, and should be an integer smaller than the one entered for auto-archive, but otherwise funtions the same. Press ENTER without entering a value if you do not wish to use this function.
+    e. generate another: if you would like to track another blog, enter y, and it will loop through the prompts again. If you are done with the settings, enter n to quit the script.
+ 5. run pythonthreadtracker script. type 'python3 pythonthreadtracker.py', and press ENTER to run the script. This will take a while to complete the first time it is run, especially if you have an older blog or thousands of posts. The script will generate two files, all threads, and RP threads.
+ 6. If you do not have a tag to denote rp threads, you can edit the csv either in a plaintext editor or spreadsheet program of your choosing, and enter 'true' for the threads you want to track under the column 'rp thread' You will then need to run the script that loads all_threads and then sorts out the rp thread entries.
+    a. What may be an easier alternative is to add a tag to track using the bulk tag funtion on tumblr's archive. Feedback on this funtionality would be much appreciated.
+ 7. That should be it! now open the csv labeled RP threads, and they should show all rp threads
