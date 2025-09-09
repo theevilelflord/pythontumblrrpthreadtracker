@@ -260,6 +260,6 @@ for filename in os.listdir(directory):
     tracked_threads = rp_threads[rp_threads['archive'] == 'false'].copy()
     
     tracked_threads = tracked_threads.drop(columns=['postURL', 'id', 'rootID', 'rootURL', 'archive', 'reply ID'])
-    tracked_threads.to_csv(f"{blog}_rp_threads.csv", index=False)
+    tracked_threads.to_csv(f"{blog}_tracked_threads.csv", index=False)
 
 
